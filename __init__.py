@@ -28,7 +28,7 @@ def load(app):
                 
                 request_url = app.config['SPLUNK_SERVER'] + '/services/authentication/users'
                 
-                verify_response = requests.post(request_url, data=params, auth=creds)
+                verify_response = requests.post(request_url, data=params, auth=creds, verify=False)
                 logging.debug("Attempting to create User on Splunk server: {}".format(request_url))
                 
                 if not verify_response.ok:
