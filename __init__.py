@@ -4,7 +4,7 @@ from .config import config
 import logging
 import requests
 import json
-from requests.auth import HTTPBaasicAuth
+from requests.auth import HTTPBasicAuth
 
 logging.basicConfig(level=logging.DEBUG)
 
