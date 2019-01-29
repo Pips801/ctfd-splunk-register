@@ -24,6 +24,8 @@ def load(app):
                     'roles' : app.config['SPLUNK_ROLE']
                 }
                 
+                # Consider an if statement here to check if user exists in Splunk yet
+
                 creds = HTTPBasicAuth(app.config['SPLUNK_USERNAME'], app.config['SPLUNK_PASSWORD'])
                 
                 request_url = app.config['SPLUNK_SERVER'] + '/services/authentication/users'
@@ -38,7 +40,7 @@ def load(app):
                 if bad_request:
                     errors.append("Unable to contact Splunk server to create your account.")
                 else:
-                    errors.append("owo what is this for?")
+                    return register_func(*args, **kwargs)
 
                 return render_template(
                     'register.html',
